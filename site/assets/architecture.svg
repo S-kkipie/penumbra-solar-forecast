@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 430" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#77756f"/>
+    </marker>
+    <style>
+      .box{fill:#fcfcfb;stroke:#c9c7bf;stroke-width:1.2}
+      .hl{fill:#eaf2fc;stroke:#2a78d6;stroke-width:1.4}
+      .src{fill:#fdf0e9;stroke:#eb6834;stroke-width:1.2}
+      .t{font-size:14px;font-weight:600;fill:#0b0b0b}
+      .s{font-size:11.5px;fill:#52514e}
+      .k{font-size:11px;font-family:IBM Plex Mono,monospace;fill:#77756f;letter-spacing:.06em}
+      .ln{stroke:#77756f;stroke-width:1.4;fill:none;marker-end:url(#a)}
+    </style>
+  </defs>
+  <rect width="1160" height="430" fill="#ffffff"/>
+  <text x="20" y="28" class="k">1 · PUBLIC DATA</text>
+  <text x="300" y="28" class="k">2 · FEATURES</text>
+  <text x="580" y="28" class="k">3 · MODEL + CALIBRATION</text>
+  <text x="880" y="28" class="k">4 · DELIVERY</text>
+
+  <rect x="20" y="44" width="240" height="96" rx="10" class="src"/>
+  <text x="34" y="68" class="t">Elia Open Data</text>
+  <text x="34" y="88" class="s">ods032 / ods209 / ods210, 15-min</text>
+  <text x="34" y="104" class="s">PV output · capacity · 11 provinces</text>
+  <text x="34" y="120" class="s">TSO forecast D-1 11h + P10/P90</text>
+
+  <rect x="20" y="156" width="240" height="96" rx="10" class="src"/>
+  <text x="34" y="180" class="t">Open-Meteo Previous Runs</text>
+  <text x="34" y="200" class="s">ICON · GFS · ARPEGE/AROME · GEM</text>
+  <text x="34" y="216" class="s">ECMWF IFS + AIFS (AI) · HARMONIE ×2</text>
+  <text x="34" y="232" class="s">runs issued 48 h / 24 h earlier</text>
+
+  <rect x="20" y="268" width="240" height="72" rx="10" class="src"/>
+  <text x="34" y="292" class="t">Market prices</text>
+  <text x="34" y="312" class="s">D-1 day-ahead (feature) · imbalance</text>
+  <text x="34" y="328" class="s">prices (impact analysis only)</text>
+
+  <rect x="300" y="44" width="240" height="208" rx="10" class="box"/>
+  <text x="314" y="68" class="t">Leakage-free design matrix</text>
+  <text x="314" y="92" class="s">QH → hourly, no imputation of targets</text>
+  <text x="314" y="110" class="s">Radiation re-labelled to interval start</text>
+  <text x="314" y="128" class="s">Capacity-weighted provincial mean</text>
+  <text x="314" y="146" class="s">(weights lagged 2 days)</text>
+  <text x="314" y="164" class="s">Clear-sky index (pvlib Ineichen)</text>
+  <text x="314" y="182" class="s">Multi-model mean + spread</text>
+  <text x="314" y="200" class="s">Spatial dispersion across provinces</text>
+  <text x="314" y="218" class="s">Solar elevation / azimuth / season</text>
+  <text x="314" y="236" class="s">D-1 prices · trailing perf. ratio</text>
+
+  <rect x="580" y="44" width="260" height="96" rx="10" class="hl"/>
+  <text x="594" y="68" class="t">LightGBM quantile regression</text>
+  <text x="594" y="88" class="s">P10 · P50 · P90, non-crossing</text>
+  <text x="594" y="104" class="s">Penumbra: weather only</text>
+  <text x="594" y="120" class="s">Hybrid: residual correction of Elia 11h</text>
+
+  <rect x="580" y="156" width="260" height="96" rx="10" class="hl"/>
+  <text x="594" y="180" class="t">Mondrian conformal (CQR)</text>
+  <text x="594" y="200" class="s">Calibrated on last 60 days, separately</text>
+  <text x="594" y="216" class="s">for low / mid / high sun → 80 % band</text>
+  <text x="594" y="232" class="s">holds at dawn, noon and dusk</text>
+
+  <rect x="580" y="268" width="260" height="140" rx="10" class="box"/>
+  <text x="594" y="292" class="t">Validation</text>
+  <text x="594" y="312" class="s">Rolling origin: refit monthly, test on</text>
+  <text x="594" y="328" class="s">the next unseen month (19 months)</text>
+  <text x="594" y="344" class="s">vs persistence, climatology, linear NWP,</text>
+  <text x="594" y="360" class="s">and Elia's operational forecast</text>
+  <text x="594" y="376" class="s">Diebold–Mariano · block bootstrap</text>
+  <text x="594" y="392" class="s">pinball · coverage · Winkler · ablations</text>
+
+  <rect x="880" y="44" width="260" height="96" rx="10" class="box"/>
+  <text x="894" y="68" class="t">GitHub Actions, daily 10:30 UTC</text>
+  <text x="894" y="88" class="s">before day-ahead gate closure (12:00 CET)</text>
+  <text x="894" y="104" class="s">latest NWP runs + Elia 11h forecast</text>
+  <text x="894" y="120" class="s">→ tomorrow's P10/P50/P90</text>
+
+  <rect x="880" y="156" width="260" height="96" rx="10" class="box"/>
+  <text x="894" y="180" class="t">Append-only forecast log</text>
+  <text x="894" y="200" class="s">committed to git, never rewritten</text>
+  <text x="894" y="216" class="s">scored when Elia publishes actuals</text>
+  <text x="894" y="232" class="s">→ verifiable live track record</text>
+
+  <rect x="880" y="268" width="260" height="96" rx="10" class="hl"/>
+  <text x="894" y="292" class="t">Static dashboard (GitHub Pages)</text>
+  <text x="894" y="312" class="s">tomorrow's fan chart · live record</text>
+  <text x="894" y="328" class="s">backtest · day explorer · impact</text>
+  <text x="894" y="344" class="s">zero servers, zero cost</text>
+
+  <path class="ln" d="M260 92 H300"/>
+  <path class="ln" d="M260 204 H300"/>
+  <path class="ln" d="M540 92 H580"/>
+  <path class="ln" d="M710 140 V156"/>
+  <path class="ln" d="M710 252 V268"/>
+  <path class="ln" d="M840 92 H880"/>
+  <path class="ln" d="M1010 140 V156"/>
+  <path class="ln" d="M1010 252 V268"/>
+  <path class="ln" d="M260 304 C 280 304, 285 240, 300 236"/>
+  <path class="ln" d="M260 326 C 450 326, 450 400, 580 392"/>
+</svg>

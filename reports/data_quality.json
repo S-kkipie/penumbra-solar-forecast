@@ -1,0 +1,23 @@
+{
+ "first_hour": "2024-04-01 00:00:00+00:00",
+ "last_hour": "2026-10-29 23:00:00+00:00",
+ "hours_expected": 22608,
+ "hours_with_target": 22409,
+ "daylight_hours": 12273,
+ "missing_target_pct": 0.88,
+ "nwp_missing_pct": {
+  "aifs": 33.46,
+  "dmi": 0.0,
+  "ecmwf": 0.0,
+  "gem": 0.0,
+  "gfs": 0.0,
+  "icon": 0.16,
+  "knmi": 0.0,
+  "mf": 0.0
+ },
+ "elia_da11_missing_pct": 0.17,
+ "capacity_mw_first": 9088.1,
+ "capacity_mw_last": 12107.8,
+ "cf_max": 0.751,
+ "night_nonzero_hours": 0
+}

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penumbra · Solar Forecast</title>
+<meta name="description" content="Calibrated day-ahead solar PV forecasts for Belgium's grid, benchmarked against the TSO's operational forecast and published daily with an append-only track record.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='11' fill='%23eda100'/><path d='M16 5a11 11 0 0 1 0 22z' fill='%230b0b0b' opacity='.55'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="#"><span class="glyph" aria-hidden="true"></span>Penumbra</a>
+    <nav aria-label="Sections">
+      <a href="#tomorrow">Tomorrow</a>
+      <a href="#live">Live record</a>
+      <a href="#backtest">Backtest</a>
+      <a href="#explorer">Explorer</a>
+      <a href="#impact">Impact</a>
+      <a href="#method">Method</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">DataNova 2026 · DN-SU-01 Solar Energy Generation Forecasting · Sustainability track</p>
+    <h1>Day-ahead solar forecasts that know <em>when they're unsure</em>.</h1>
+    <p class="lede">Penumbra forecasts tomorrow's output of Belgium's ~12&nbsp;GW photovoltaic fleet from eight archived weather models (including ECMWF's AI model), wraps every hour in a conformally calibrated 80&nbsp;% band, and is scored against the grid operator's own forecast — in a 19-month leakage-free backtest and in a public, append-only live track record.</p>
+    <div class="hero-kpis" id="heroKpis" aria-live="polite"></div>
+  </section>
+
+  <section id="tomorrow" class="wrap block">
+    <div class="block-head">
+      <h2>Tomorrow in Belgium</h2>
+      <p class="meta" id="tomorrowMeta">Loading the latest issued forecast…</p>
+    </div>
+    <div class="grid-2-1">
+      <figure class="card chart-card">
+        <figcaption>
+          <span class="fig-title">Hourly PV output, MW</span>
+          <span class="legend" id="tomorrowLegend"></span>
+        </figcaption>
+        <div id="chartTomorrow" class="chart" role="img" aria-label="Fan chart of tomorrow's solar forecast"></div>
+      </figure>
+      <div class="stack" id="tomorrowTiles"></div>
+    </div>
+  </section>
+
+  <section id="live" class="wrap block">
+    <div class="block-head">
+      <h2>Live track record</h2>
+      <p class="meta">Every forecast is issued before the day-ahead market closes (12:00 CET), committed to git, never edited, then scored against Elia's measured output once it is published.</p>
+    </div>
+    <div class="tiles" id="liveTiles"></div>
+    <div class="grid-2-1">
+      <figure class="card chart-card">
+        <figcaption><span class="fig-title">Daily mean absolute error, MW (daylight hours)</span><span class="legend" id="liveLegend"></span></figcaption>
+        <div id="chartLive" class="chart short" role="img" aria-label="Daily forecast error, Penumbra versus Elia"></div>
+      </figure>
+      <div class="card table-card">
+        <table class="data" id="liveTable"><caption class="sr">Live forecast scores by day</caption></table>
+      </div>
+    </div>
+  </section>
+
+  <section id="backtest" class="wrap block">
+    <div class="block-head">
+      <h2>Backtest: <span id="btPeriod">19 months</span>, out of sample</h2>
+      <p class="meta">Expanding-window, refit every month. Weather inputs are archived forecasts issued 48&nbsp;h before each hour, so every input existed before Elia's D-1 11:00 forecast. Same daylight hours for every method.</p>
+    </div>
+    <div class="switch" role="radiogroup" aria-label="Weather input lead time">
+      <button type="button" role="radio" aria-checked="true" data-lead="2">Strict: 48 h-old weather runs</button>
+      <button type="button" role="radio" aria-checked="false" data-lead="1">Optimistic: 24 h-old runs</button>
+    </div>
+    <div class="tiles" id="btTiles"></div>
+    <div class="grid-2">
+      <figure class="card chart-card">
+        <figcaption><span class="fig-title">Error by method — nMAE, % of installed capacity</span></figcaption>
+        <div id="chartMethods" class="chart" role="img" aria-label="Bar chart of error by method"></div>
+      </figure>
+      <figure class="card chart-card">
+        <figcaption><span class="fig-title">Monthly nMAE, % of capacity</span><span class="legend" id="monthLegend"></span></figcaption>
+        <div id="chartMonthly" class="chart" role="img" aria-label="Monthly error by method"></div>
+      </figure>
+      <figure class="card chart-card">
+        <figcaption><span class="fig-title">80 % band coverage by forecast sky regime</span><span class="legend" id="covLegend"></span></figcaption>
+        <div id="chartCoverage" class="chart" role="img" aria-label="Coverage of the 80 percent band by regime"></div>
+      </figure>
+      <figure class="card chart-card">
+        <figcaption><span class="fig-title">nMAE by hour of day (UTC), % of capacity</span><span class="legend" id="hourLegend"></span></figcaption>
+        <div id="chartHour" class="chart" role="img" aria-label="Error by hour of day"></div>
+      </figure>
+    </div>
+    <div class="grid-2">
+      <div class="card table-card">
+        <h3>All methods</h3>
+        <table class="data" id="pointTable"></table>
+      </div>
+      <div class="card table-card">
+        <h3>Is the difference real?</h3>
+        <p class="small">Diebold–Mariano test on daily mean absolute-error differentials (Newey–West variance) and a 95&nbsp;% moving-block bootstrap interval of the nMAE difference. Negative = Penumbra better.</p>
+        <table class="data" id="sigTable"></table>
+        <h3 class="mt">What drives skill (ablation, strict setting)</h3>
+        <table class="data" id="ablTable"></table>
+      </div>
+    </div>
+  </section>
+
+  <section id="explorer" class="wrap block">
+    <div class="block-head">
+      <h2>Explore any backtest day</h2>
+      <p class="meta">Pick a day from the out-of-sample period. Shortcuts jump to telling cases.</p>
+    </div>
+    <div class="filters">
+      <label>Day <input type="date" id="dayPicker"></label>
+      <div class="chips" id="dayChips"></div>
+    </div>
+    <figure class="card chart-card">
+      <figcaption><span class="fig-title" id="dayTitle">—</span><span class="legend" id="dayLegend"></span></figcaption>
+      <div id="chartDay" class="chart tall" role="img" aria-label="Forecasts and actual output for the selected day"></div>
+      <p class="small" id="dayStats"></p>
+    </figure>
+  </section>
+
+  <section id="impact" class="wrap block">
+    <div class="block-head">
+      <h2>Why a few percent matter</h2>
+      <p class="meta">Translating error into grid quantities. Estimates use only public data; assumptions are stated next to each number.</p>
+    </div>
+    <div class="tiles" id="impactTiles"></div>
+    <p class="small" id="impactNotes"></p>
+  </section>
+
+  <section id="method" class="wrap block">
+    <div class="block-head">
+      <h2>How it works</h2>
+      <p class="meta">Everything runs on free, public data and free infrastructure.</p>
+    </div>
+    <figure class="card diagram">
+      <img src="assets/architecture.svg" alt="Pipeline: Elia Open Data and Open-Meteo archived NWP feed feature engineering, LightGBM quantile models and Mondrian conformal calibration; a daily GitHub Action issues forecasts to this static site.">
+    </figure>
+    <div class="grid-3">
+      <div class="card prose">
+        <h3>Data</h3>
+        <ul>
+          <li><b>Target:</b> Elia Open Data ods032/ods209/ods210 — upscaled measured PV output, quarter-hourly, 11 provinces + national, with installed capacity.</li>
+          <li><b>Benchmark:</b> Elia's own day-ahead forecast issued D-1 11:00 with its P10/P90 band (same files).</li>
+          <li><b>Weather:</b> Open-Meteo Previous Runs API — ICON, GFS, ARPEGE/AROME, ECMWF IFS, ECMWF AIFS (AI), HARMONIE (KNMI, DMI), GEM, at fixed 24/48 h lead, 11 provincial points.</li>
+          <li><b>Prices (impact only):</b> Energy-Charts day-ahead (CC BY 4.0) and Elia imbalance prices.</li>
+        </ul>
+      </div>
+      <div class="card prose">
+        <h3>Model</h3>
+        <ul>
+          <li>Capacity-weighted national features per weather model, multi-model mean and <i>spread</i>, clear-sky index (pvlib Ineichen), plane-of-array irradiance, spatial dispersion, trailing performance ratio, yesterday's day-ahead prices (curtailment risk).</li>
+          <li>LightGBM quantile regression for P10/P50/P90 of the capacity factor; non-crossing.</li>
+          <li><b>Mondrian conformal calibration</b> per solar-elevation regime on the last 60 days → finite-sample coverage guarantee under exchangeability.</li>
+          <li><b>Hybrid</b> learns a residual correction and calibrated band on top of Elia's 11:00 forecast, which is public at the same moment.</li>
+        </ul>
+      </div>
+      <div class="card prose">
+        <h3>Honesty rules</h3>
+        <ul>
+          <li>No input from the future: 48 h-old weather runs, capacity lagged two days, refit monthly on past data only (unit-tested).</li>
+          <li>All methods scored on the identical set of daylight hours.</li>
+          <li>Significance tested, not eyeballed.</li>
+          <li>Live log is append-only and timestamped by git.</li>
+          <li id="limitsLine">Limitations are listed in the README.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Built by Adrian Issac Mamani Quispe (Arequipa, Peru) for DataNova 2026. Data: Elia Open Data Licence; Open-Meteo (CC BY 4.0, non-commercial API); Energy-Charts/SMARD (CC BY 4.0). Not affiliated with Elia.</p>
+  <p><a id="repoLink" href="https://github.com/S-kkipie/penumbra-solar-forecast">Source code, notebooks &amp; model card on GitHub</a></p>
+</footer>
+<script src="app.js" type="module"></script>
+</body>
+</html>

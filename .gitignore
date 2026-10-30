@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/raw/
+.DS_Store
+*.egg-info/
+data/*.log
+deck/node_modules/
+.playwright-mcp/

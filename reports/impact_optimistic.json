@@ -1,0 +1,29 @@
+{
+ "years": 1.571526351813826,
+ "methods": {
+  "elia_da11": {
+   "abs_error_gwh_per_year": 1632.575501860845,
+   "p99_overforecast_mw": 1538.6431900000002,
+   "p999_overforecast_mw": 2566.197216500038,
+   "imbalance_cost_eur_per_mwh": 7.710619870348655,
+   "imbalance_cost_meur_per_year": 95.00518198558301,
+   "priced_hours": 7659
+  },
+  "pen_q50": {
+   "abs_error_gwh_per_year": 1742.5090802425111,
+   "p99_overforecast_mw": 1664.345807446864,
+   "p999_overforecast_mw": 2565.8636775985237,
+   "imbalance_cost_eur_per_mwh": 6.487211378235806,
+   "imbalance_cost_meur_per_year": 79.9311479402977,
+   "priced_hours": 7659
+  },
+  "hyb_q50": {
+   "abs_error_gwh_per_year": 1554.3824916993494,
+   "p99_overforecast_mw": 1521.1925518063256,
+   "p999_overforecast_mw": 2643.439133286211,
+   "imbalance_cost_eur_per_mwh": 6.771144745975771,
+   "imbalance_cost_meur_per_year": 83.42958797851674,
+   "priced_hours": 7659
+  }
+ }
+}
