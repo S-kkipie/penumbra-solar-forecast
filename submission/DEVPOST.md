@@ -9,7 +9,7 @@
 **Links**
 - Working demo: https://skkippie.me/penumbra-solar-forecast/
 - Code: https://github.com/S-kkipie/penumbra-solar-forecast
-- Presentation (PPT): <paste Google Drive / OneDrive link to submission/Penumbra_DataNova2026.pptx>
+- Presentation (PPT, 8 slides, public): https://skkippie.me/penumbra-solar-forecast/deck/Penumbra_DataNova2026.pdf (PPTX: https://skkippie.me/penumbra-solar-forecast/deck/Penumbra_DataNova2026.pptx; full 12-slide deck: https://skkippie.me/penumbra-solar-forecast/deck/Penumbra_DataNova2026_full.pdf)
 - Video: <paste YouTube link>
 
 **Built with:** python, pandas, lightgbm, scikit-learn, scipy, pvlib, numpy, pyarrow, echarts, javascript, html, css, github-actions, github-pages, open-meteo, elia-open-data, pptxgenjs

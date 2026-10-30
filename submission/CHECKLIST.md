@@ -17,9 +17,10 @@ Lo que el agente **no** hizo (a propósito) y debe hacer Adrian u otro agente. O
 - [ ] Grabar siguiendo `submission/VIDEO_SCRIPT.md` (pantalla + voz; OBS o Loom). Inglés recomendado (jurado internacional).
 - [ ] Subir a YouTube como *Unlisted* o *Public* (Devpost acepta YouTube/Vimeo). Copiar el enlace.
 
-## 3. PPT (obligatorio)
-- [ ] El deck está en `submission/Penumbra_DataNova2026.pptx` (y `submission/Penumbra_DataNova2026.pdf`). Abrirlo en PowerPoint/Google Slides y revisar rápido que se vea bien en tu equipo.
-- [ ] Subirlo a Google Drive (o OneDrive) con permiso *"Cualquiera con el enlace puede ver"*, y/o adjuntar el PDF en Devpost. Copiar el enlace.
+## 3. PPT (obligatorio) — YA PUBLICADO
+- [x] Deck corto (8 slides) público sin login: **https://skkippie.me/penumbra-solar-forecast/deck/Penumbra_DataNova2026.pdf** (PPTX: `.../deck/Penumbra_DataNova2026.pptx`; deck completo 12 slides: `.../deck/Penumbra_DataNova2026_full.pdf`).
+- [ ] Opcional: abrirlo en PowerPoint/Google Slides para revisar que se vea bien en tu equipo. Fuentes usadas: Cambria + Calibri.
+- Fuentes locales: `submission/Penumbra_DataNova2026_short.pptx|pdf` y `submission/Penumbra_DataNova2026.pptx|pdf`.
 
 ## 4. Envío en Devpost (antes del **10 nov 2026, 17:00 hora de Perú** = 11 nov 03:30 IST)
 - [ ] Copiar los textos de `submission/DEVPOST.md` en los campos correspondientes (título, tagline, descripción, "Built with").
