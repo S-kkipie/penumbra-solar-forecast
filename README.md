@@ -6,7 +6,7 @@ Penumbra forecasts tomorrow's hourly output of Belgium's ~12 GW photovoltaic fle
 
 - **Live dashboard:** https://skkippie.me/penumbra-solar-forecast/ (mirror: https://s-kkipie.github.io/penumbra-solar-forecast/)
 - **Full evaluation report:** [`docs/EVALUATION.md`](docs/EVALUATION.md)
-- **Presentation:** [`submission/Penumbra_DataNova2026.pptx`](submission/Penumbra_DataNova2026.pptx) ([PDF](submission/Penumbra_DataNova2026.pdf))
+- **Presentation:** 8-slide deck https://skkippie.me/penumbra-solar-forecast/deck/Penumbra_DataNova2026.pdf ([PPTX](submission/Penumbra_DataNova2026_short.pptx)); full 12-slide deck [PPTX](submission/Penumbra_DataNova2026.pptx) / [PDF](submission/Penumbra_DataNova2026.pdf)
 
 ![Pipeline](site/assets/architecture.svg)
 
