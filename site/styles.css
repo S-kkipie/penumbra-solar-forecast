@@ -19,7 +19,7 @@
   --radius: 10px;
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Newsreader", Georgia, serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -83,7 +83,7 @@ nav a:hover { color: var(--text-primary); }
 .theme-toggle { background: none; border: 1px solid var(--line); color: var(--text-secondary); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; flex: none; }
 
 .hero { padding: 56px 0 24px; }
-.eyebrow { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 16px; }
+.eyebrow { font: 500 13px/1.4 var(--font-mono); letter-spacing: 0.01em; color: var(--text-muted); margin: 0 0 16px; }
 h1 { font: 500 clamp(32px, 5vw, 56px)/1.06 var(--font-display); letter-spacing: -0.02em; margin: 0 0 18px; max-width: 18ch; text-wrap: balance; }
 h1 em { font-style: italic; color: var(--text-secondary); }
 .lede { font-size: 18px; color: var(--text-secondary); max-width: 68ch; margin: 0; }
