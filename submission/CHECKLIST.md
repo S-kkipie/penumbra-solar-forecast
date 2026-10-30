@@ -8,7 +8,7 @@ Lo que el agente **no** hizo (a propósito) y debe hacer Adrian u otro agente. O
 - [ ] Registrarse en Devpost: https://datanova-2026-global-data-thon.devpost.com/ (lo hace otro agente o el usuario).
 
 ## 1. Verificar que todo funciona (5 min)
-- [ ] Abrir la demo: **https://s-kkipie.github.io/penumbra-solar-forecast/** (redirige a http://skkippie.me/penumbra-solar-forecast/). Probar en el móvil y en el escritorio; probar el modo oscuro (botón ◐).
+- [ ] Abrir la demo: **https://skkippie.me/penumbra-solar-forecast/** (espejo: https://s-kkipie.github.io/penumbra-solar-forecast/, que redirige al dominio propio). Probar en el móvil y en el escritorio; probar el modo oscuro (botón ◐).
 - [ ] Repo: **https://github.com/S-kkipie/penumbra-solar-forecast** — debe verse el README con el diagrama.
 - [ ] Pestaña **Actions** del repo: el workflow `daily-forecast-and-pages` debe correr cada día (10:30, 11:20 y 07:00 UTC). Si alguna corrida falla, abrirla, leer el log y relanzar con *Run workflow*. GitHub desactiva los cron tras 60 días sin actividad (no aplica aquí porque el bot hace commits diarios).
 - [ ] Antes de enviar (≈10 nov), comprobar que la sección **Live track record** ya tiene varios días puntuados. Si la Action no corrió algún día, ese día queda sin pronóstico (no se puede rellenar después: el log es de solo-anexar y eso es parte del argumento de honestidad).

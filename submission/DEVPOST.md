@@ -7,7 +7,7 @@
 **Track / problem statement:** Sustainability · DN-SU-01 Solar Energy Generation Forecasting
 
 **Links**
-- Working demo: https://s-kkipie.github.io/penumbra-solar-forecast/
+- Working demo: https://skkippie.me/penumbra-solar-forecast/
 - Code: https://github.com/S-kkipie/penumbra-solar-forecast
 - Presentation (PPT): <paste Google Drive / OneDrive link to submission/Penumbra_DataNova2026.pptx>
 - Video: <paste YouTube link>

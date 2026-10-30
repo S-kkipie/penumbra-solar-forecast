@@ -4,7 +4,7 @@
 
 Penumbra forecasts tomorrow's hourly output of Belgium's ~12 GW photovoltaic fleet. It uses eight archived weather models, one of them ECMWF's machine-learned AIFS, and puts a conformally calibrated 80 % band around every hour. It is scored against the grid operator's own operational forecast in two ways: a 19-month backtest with no look-ahead, and a public live track record where each day's forecast is appended to a log and never edited.
 
-- **Live dashboard:** https://s-kkipie.github.io/penumbra-solar-forecast/ (redirects to https://skkippie.me/penumbra-solar-forecast/)
+- **Live dashboard:** https://skkippie.me/penumbra-solar-forecast/ (mirror: https://s-kkipie.github.io/penumbra-solar-forecast/)
 - **Full evaluation report:** [`docs/EVALUATION.md`](docs/EVALUATION.md)
 - **Presentation:** [`submission/Penumbra_DataNova2026.pptx`](submission/Penumbra_DataNova2026.pptx) ([PDF](submission/Penumbra_DataNova2026.pdf))
 

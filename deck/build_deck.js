@@ -12,7 +12,7 @@ const R1 = J("reports/metrics_lead1.json");
 const DQ = J("reports/data_quality.json");
 const IMP = J("reports/impact.json").methods;
 const DAYS = J("site/data/days.json");
-const SITE_URL = process.env.SITE_URL || "https://s-kkipie.github.io/penumbra-solar-forecast/";
+const SITE_URL = process.env.SITE_URL || "https://skkippie.me/penumbra-solar-forecast/";
 const REPO_URL = "https://github.com/S-kkipie/penumbra-solar-forecast";
 const OUT = path.join(ROOT, "submission", "Penumbra_DataNova2026.pptx");
 

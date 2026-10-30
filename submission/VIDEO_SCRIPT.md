@@ -2,7 +2,7 @@
 
 Recording setup:
 - Record the screen at 1080p with your voice over it (OBS or Loom).
-- Use the live dashboard (https://s-kkipie.github.io/penumbra-solar-forecast/) in a desktop browser at 100 % zoom.
+- Use the live dashboard (https://skkippie.me/penumbra-solar-forecast/) in a desktop browser at 100 % zoom.
 - Keep the deck `submission/Penumbra_DataNova2026.pptx` open in another window.
 - Speak slowly, at about 140 words per minute. Each segment below fits its time slot.
 
