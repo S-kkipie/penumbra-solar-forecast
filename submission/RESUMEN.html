@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penumbra · Resumen</title>
+<style>
+:root{color-scheme:light;--bg:#f4f3ef;--card:#fcfcfb;--line:#dcdad3;--ink:#0b0b0b;--ink2:#52514e;--muted:#77756f;--pen:#2a78d6;--elia:#eb6834;--good:#0ca30c;--warn:#b7791f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#121211;--card:#1a1a19;--line:#34332f;--ink:#fff;--ink2:#c3c2b7;--muted:#8f8e86;--pen:#3987e5;--elia:#d95926}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#121211;--card:#1a1a19;--line:#34332f;--ink:#fff;--ink2:#c3c2b7;--muted:#8f8e86;--pen:#3987e5;--elia:#d95926}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{width:min(860px,100% - 32px);margin:0 auto;padding:28px 0 56px}
+h1{font:600 28px/1.15 Georgia,serif;margin:0 0 6px}h2{font:600 18px/1.3 system-ui;margin:28px 0 10px}
+.sub{color:var(--ink2);margin:0 0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.k{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.k b{display:block;font:600 24px/1.1 ui-monospace,Menlo,monospace}.k span{color:var(--ink2);font-size:13px}
+a{color:var(--pen);word-break:break-all}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 6px;border-bottom:1px solid var(--line);text-align:right}td:first-child,th:first-child{text-align:left}
+th{color:var(--muted);font-weight:500}.tag{display:inline-block;font:600 11px ui-monospace,monospace;padding:2px 7px;border-radius:99px;border:1px solid currentColor}
+.warn{color:var(--warn)}.ok{color:var(--good)}ul{padding-left:18px;margin:6px 0}li{margin:5px 0}code{font:12px ui-monospace,monospace;background:var(--bg);padding:1px 4px;border-radius:4px}
+.tw{overflow-x:auto}
+</style>
+</head>
+<body><div class="w">
+<h1>Penumbra — DataNova 2026</h1>
+<p class="sub">Track Sustainability · <b>DN-SU-01 Solar Energy Generation Forecasting</b>. Pronóstico day-ahead calibrado de la generación solar de Bélgica (~12 GW), comparado contra el pronóstico oficial del operador de red (Elia).</p>
+
+<div class="card">
+<b>Enlaces</b>
+<ul>
+<li>Demo: <a href="https://skkippie.me/penumbra-solar-forecast/">https://skkippie.me/penumbra-solar-forecast/</a></li>
+<li>Espejo: <a href="https://s-kkipie.github.io/penumbra-solar-forecast/">https://s-kkipie.github.io/penumbra-solar-forecast/</a></li>
+<li>Repo: <a href="https://github.com/S-kkipie/penumbra-solar-forecast">https://github.com/S-kkipie/penumbra-solar-forecast</a></li>
+<li>Actions (job diario): <a href="https://github.com/S-kkipie/penumbra-solar-forecast/actions">github.com/S-kkipie/penumbra-solar-forecast/actions</a></li>
+</ul>
+</div>
+
+<h2>Resultados (575 días fuera de muestra)</h2>
+<div class="kpis">
+<div class="k"><b>2.88 %</b><span>nMAE Hybrid vs 2.87 % Elia (estricto, empate estadístico p=0.98)</span></div>
+<div class="k"><b>2.74 %</b><span>nMAE Hybrid con corridas NWP de 24 h: 4.6 % mejor que Elia (p=0.010)</span></div>
+<div class="k"><b>29 %</b><span>banda 80 % más estrecha que la P10–P90 de Elia, misma cobertura (81.2 % vs 80.0 %)</span></div>
+<div class="k"><b>445 MW</b><span>menos de banda media → menos reserva para el mismo riesgo</span></div>
+</div>
+<div class="card tw">
+<table>
+<tr><th>Método (estricto)</th><th>nMAE %</th><th>Cobertura 80 %</th><th>Winkler</th></tr>
+<tr><td>Penumbra Hybrid</td><td>2.88</td><td>81.2</td><td>13.18</td></tr>
+<tr><td>Penumbra solo-clima (datos gratis)</td><td>3.50</td><td>79.7</td><td>15.80</td></tr>
+<tr><td>Elia operacional D-1 11h</td><td>2.87</td><td>80.0</td><td>14.70</td></tr>
+<tr><td>Regresión lineal NWP</td><td>4.26</td><td>—</td><td>—</td></tr>
+<tr><td>Persistencia (D-2)</td><td>7.76</td><td>—</td><td>—</td></tr>
+</table>
+</div>
+<p class="sub">Limitación honesta: en horas de precio negativo (~10 % de horas de día, curtailment) sobre-pronosticamos; fuera de ellas el Hybrid supera a Elia incluso en modo estricto (2.68 % vs 2.72 %).</p>
+
+<h2>Archivos para el envío</h2>
+<div class="card"><ul>
+<li>PPT: <code>penumbra/submission/Penumbra_DataNova2026.pptx</code> (+ <code>.pdf</code>)</li>
+<li>Texto Devpost: <code>penumbra/submission/DEVPOST.md</code></li>
+<li>Guion de video (3 min): <code>penumbra/submission/VIDEO_SCRIPT.md</code></li>
+<li>Checklist manual: <code>penumbra/submission/CHECKLIST.md</code></li>
+<li>Evaluación completa: <code>penumbra/docs/EVALUATION.md</code></li>
+</ul></div>
+
+<h2>Lo que falta hacer a mano</h2>
+<div class="card"><ul>
+<li><span class="tag warn">URGENTE</span> Confirmar elegibilidad: Devpost dice "Students only / Team required"; las reglas dicen que pueden participar profesionales e individuos. Escribir a contact@datanovathon.com.</li>
+<li><span class="tag warn">HOY 30-oct</span> Registro en Unstop (₹100) eligiendo DN-SU-01: la web marca el 30 oct como "Problem Statement Deadline".</li>
+<li>Grabar y subir el video (YouTube) siguiendo el guion.</li>
+<li>Subir el PPT a Drive con enlace público.</li>
+<li>Enviar en Devpost antes del <b>10 nov 2026, 17:00 hora Perú</b> (= 11 nov 03:30 IST).</li>
+<li>Revisar que la Action diaria corre (primer pronóstico real: 30 oct 10:30 UTC para el 31 oct).</li>
+</ul></div>
+</div>
+</body></html>

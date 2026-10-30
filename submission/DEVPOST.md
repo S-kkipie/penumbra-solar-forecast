@@ -64,7 +64,7 @@ The whole pipeline reproduces from the repository with five commands.
 ## Results & validation
 The backtest uses a rolling origin with monthly refits. It covers 19 out-of-sample months, 575 days and 7,659 daylight hours, and every method is scored on the same hours.
 - **Point accuracy.** Hybrid nMAE is **2.88 %** against **2.87 %** for Elia's operational forecast (strict inputs, Diebold–Mariano p = 0.98, so a statistical tie). With fresher 24 h inputs it is **2.74 %**, **4.6 % better** than Elia (p = 0.010). The weather-only model, using free data only, reaches 3.50 % (strict) and 3.08 % (fresh). That is 55 % better than persistence and 18 % better than a linear regression on the weather forecast.
-- **Uncertainty.** The 80 % band covers **81.2 %** of hours and is **29 % narrower** than Elia's P10–P90 band, which covers 80.1 %. The Winkler interval score is **10.4 % better**. Under forecast-overcast skies Elia's band covers only 62 % of hours; Penumbra's covers 89 %.
+- **Uncertainty.** The 80 % band covers **81.2 %** of hours and is **29 % narrower** than Elia's P10–P90 band, which covers 80.0 %. The Winkler interval score is **10.4 % better**. Under forecast-overcast skies Elia's band covers only 62 % of hours; Penumbra's covers 89 %.
 - **Ablations.** Removing the AI weather model AIFS costs 3.0 %, and removing the market features costs 1.6 %. A single-model setup is 12–23 % worse.
 - **Honest limitation.** In hours with negative prices (about 10 % of daylight hours) PV is curtailed and Penumbra over-forecasts. In all other hours the Hybrid beats Elia even with strict inputs: 2.68 % vs 2.72 %.
 

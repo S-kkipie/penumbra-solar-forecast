@@ -18,7 +18,7 @@ Out-of-sample, 575 days (Apr 2025 to Oct 2026), 7,659 daylight hours. Every meth
 |---|---:|---:|---:|
 | nMAE, strict inputs (weather runs issued 48 h before each hour) | 2.87 % | **2.88 %** (DM p = 0.98) | 3.50 % |
 | nMAE, optimistic inputs (runs issued 24 h before each hour) | 2.87 % | **2.74 %**, 4.6 % better (DM p = 0.010) | 3.08 % |
-| 80 % band coverage (strict) | 80.1 % | **81.2 %** | 79.7 % |
+| 80 % band coverage (strict) | 80.0 % | **81.2 %** | 79.7 % |
 | Mean band width, % of capacity (strict) | 12.5 | **8.9**, 29 % narrower | 10.9 |
 | Winkler interval score (strict, lower is better) | 14.70 | **13.18**, 10.4 % better | 15.80 |
 | Mean pinball loss P10/P50/P90 (strict) | 0.969 | **0.919** | 1.110 |
